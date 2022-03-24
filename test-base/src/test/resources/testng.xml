@@ -2,9 +2,56 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
-    <test name="test1" >
+    <test name="test3">
+        <groups>
+            <define name="priority">
+                <include name="funcTest"/>
+                <include name="checkInTest"/>
+            </define>
+            <define name="exception">
+                <include name="exception"/>
+            </define>
+            <define name="depends">
+                <include name="depend"/>
+                <include name="third"/>
+                <include name="fourthly"/>
+            </define>
+            <run>
+                <exclude name="depends"/>
+                <exclude name="priority"/>
+                <exclude name="exception"/>
+            </run>
+        </groups>
         <classes>
-            <class name="com.xzj.base1.TestParams"/>
+            <class name="com.xzj.base1.priority.TestMessageUtil2"/>
+            <class name="com.xzj.base1.exception.TestExceptionAnnotation"/>
+            <class name="com.xzj.base1.depends.TestDepends"/>
+            <class name="com.xzj.base1.depends.TestDependsOnGroup"/>
         </classes>
     </test>
+    <test name="test4">
+        <parameter name="myName" value="xzj"/>
+        <classes>
+            <class name="com.xzj.base1.parameter.TestParameter">
+                <parameter name="myName" value="lz"/>
+            </class>
+            <class name="com.xzj.base1.parameter.TestPrimeNumberChecker"/>
+        </classes>
+    </test>
+
+
+<!--    <test name="test1" >-->
+<!--        <classes>-->
+<!--            <class name="com.xzj.base1.TestParams"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="test2" >-->
+<!--        <classes>-->
+<!--            <class name="com.xzj.base1.annotion.TestSon_1"/>-->
+<!--            <class name="com.xzj.base1.annotion.TestSon_2"/>-->
+<!--            <class name="com.xzj.base1.priority.TestMessageUtil"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
 </suite>
