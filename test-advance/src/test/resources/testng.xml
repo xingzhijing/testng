@@ -3,14 +3,6 @@
 
 <suite name="Suite" verbose="1" >
     <test name="test">
-<!--        <groups>-->
-<!--            <define name="all">-->
-<!--                <include name="login"/>-->
-<!--            </define>-->
-<!--            <run>-->
-<!--                <include name="all"/>-->
-<!--            </run>-->
-<!--        </groups>-->
         <classes>
             <class name="com.feeclouds.login.TestLogin"/>
         </classes>

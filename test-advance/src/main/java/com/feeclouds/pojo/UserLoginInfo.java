@@ -1,11 +1,11 @@
 package com.feeclouds.pojo;
 
-public class UserLogin {
+public class UserLoginInfo {
     private String url;
     private String username;
     private String password;
 
-    public UserLogin(String url, String username, String password){
+    public UserLoginInfo(String url, String username, String password){
         this.url = url;
         this.username = username;
         this.password = password;
