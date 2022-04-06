@@ -4,7 +4,7 @@
 <suite name="Suite" verbose="1" >
     <test name="test">
         <classes>
-            <class name="com.feeclouds.login.TestLogin"/>
+            <class name="com.feeclouds.login.HttpLoginTest"/>
         </classes>
     </test>
 </suite>
