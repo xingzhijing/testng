@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HttpLoginTest{
@@ -57,9 +58,6 @@ public class HttpLoginTest{
     }
 
 
-
-
-
     public static void main(String[] args) throws IOException {
 //        登录的url
         String httpLoginUrl = "http://8.141.174.255:8084/ajax/user/login";
@@ -73,7 +71,7 @@ public class HttpLoginTest{
 //        模拟登录 选用post方式
         HttpPost httpPost = new HttpPost(httpLoginUrl);
 //        登录时所需的参数
-        ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
+        List<NameValuePair> nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair("username", userLoginInfo.getUsername()));
         nameValuePairs.add(new BasicNameValuePair("password", userLoginInfo.getPassword()));
         httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "utf-8"));

@@ -1,17 +1,13 @@
-package com.xzj.base;
+package com.xzj.reflect;
 
-import lombok.ToString;
+public class Person {
+    String name;
+    int age;
 
-//ToString 默认生成toString()方法
-@ToString
-public class Student {
-    private String name;
-    private int age;
-
-    public Student(){
+    public Person(){
     }
 
-    public Student(String name, int age){
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }

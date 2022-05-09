@@ -1,0 +1,12 @@
+[
+  {
+    "description": "这是moco框架的第一个请求",
+    "request": {
+      "uri": "/demo",
+      "method": "get"
+    },
+    "response": {
+      "text": "这是moco框架第一个请求的响应"
+    }
+  }
+]
