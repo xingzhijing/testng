@@ -66,8 +66,8 @@ public class HttpLoginTest{
         UserLoginInfo userLoginInfo = new UserLoginInfo(httpLoginUrl, "12345wlmq@qq.com", "Y7wERgSRWejG2btnRjtCEg==");
 //        UserLoginInfo userLoginInfo = new UserLoginInfo(httpLoginUrl, "xingzhijing124@deallinker.com", "Y7wERgSRWejG2btnRjtCEg==");
 //        创建httpclient对象
-//        CloseableHttpClient httpClient = HttpClients.createDefault();
-        CloseableHttpClient httpClient = new DefaultHttpClient();
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+//        CloseableHttpClient httpClient = new DefaultHttpClient();
 //        模拟登录 选用post方式
         HttpPost httpPost = new HttpPost(httpLoginUrl);
 //        登录时所需的参数
@@ -98,15 +98,15 @@ public class HttpLoginTest{
         System.out.println("遍历完的cookie：" + cookie);
 
 
-        // 需要获取数据的URL
-        // 首页接口url
-        HttpPost httpost2 = new HttpPost("http://8.141.174.255:8084/ajax/homepage");
-        // 设置之前获取到的cookie
-        httpost2.setHeader("Cookie", cookie);
-        httpost2.setHeader("Content-Type", "application/json;charset=UTF-8");
-        httpost2.setHeader("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36");
-        HttpResponse response2 = httpClient.execute(httpost2);
-        String str2 = EntityUtils.toString(response2.getEntity());
-        System.out.println(JSON.parse(str2).toString());
+//        /*// 需要获取数据的URL
+//        // 首页接口url
+//        HttpPost httpost2 = new HttpPost("http://8.141.174.255:8084/ajax/homepage");
+//        // 设置之前获取到的cookie
+//        httpost2.setHeader("Cookie", cookie);
+//        httpost2.setHeader("Content-Type", "application/json;charset=UTF-8");
+//        httpost2.setHeader("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36");
+//        HttpResponse response2 = httpClient.execute(httpost2);
+//        String str2 = EntityUtils.toString(response2.getEntity());
+//        System.out.println(JSON.parse(str2).toString());*/
     }
 }

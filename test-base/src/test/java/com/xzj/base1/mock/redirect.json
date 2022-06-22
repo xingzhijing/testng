@@ -1,0 +1,27 @@
+[
+  {
+    "description": "重定向到百度",
+    "request": {
+      "method": "post",
+      "uri": "/redirect/baidu"
+    },
+    "redirectTo": "https://www.baidu.com"
+  },
+  {
+    "description": "重定向到自己网页",
+    "request": {
+      "uri": "/redirect/first"
+    },
+    "redirectTo": "/redirect/second"
+  },
+  {
+    "description": "重定向到自己网页",
+    "request": {
+      "uri": "/redirect/second"
+    },
+    "response": {
+      "text": "这是重定向请求过来的，我是second页面"
+    }
+  }
+
+]

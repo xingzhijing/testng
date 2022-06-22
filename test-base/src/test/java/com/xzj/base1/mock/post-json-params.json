@@ -1,0 +1,18 @@
+[
+  {
+    "description": "这是带有json格式参数的post请求",
+    "request": {
+      "method": "post",
+      "uri": "/post/json/params",
+      "json": {
+        "name": "喜小乐",
+        "age": "12"
+      }
+    },
+    "response": {
+      "json": {
+        "msg": "我是response——这是带有json格式参数的post请求"
+      }
+    }
+  }
+]

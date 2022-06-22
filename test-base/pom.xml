@@ -16,6 +16,12 @@
             <artifactId>spring-web</artifactId>
             <version>5.3.9</version>
         </dependency>
+        <dependency>
+            <groupId>com.feeclouds.testng</groupId>
+            <artifactId>test-advance</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>

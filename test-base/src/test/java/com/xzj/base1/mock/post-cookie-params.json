@@ -1,0 +1,22 @@
+[
+  {
+    "description": "这是带有json格式且携带cookie参数的post请求(多个cookie值之间用分号隔开)",
+    "request": {
+      "method": "post",
+      "uri": "/post/cookie/params",
+      "json": {
+        "name": "喜小乐",
+        "age": "12"
+      },
+      "cookies": {
+        "login": "true",
+        "info": "permit"
+      }
+    },
+    "response": {
+      "json": {
+        "msg": "我是response——这是带有json格式且携带cookie参数的post请求"
+      }
+    }
+  }
+]

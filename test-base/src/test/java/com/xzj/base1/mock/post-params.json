@@ -1,0 +1,15 @@
+[
+  {
+    "description": "这是带有参数的post请求",
+    "request": {
+      "method": "post",
+      "uri": "/post/params",
+      "forms": {
+        "name": "喜小乐"
+      }
+    },
+    "response": {
+      "text": "我是response——这是带有参数的post请求"
+    }
+  }
+]

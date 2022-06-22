@@ -7,7 +7,10 @@ import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -15,13 +18,14 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 /**
  * Description: httpClient工具类
  *
- * @author JourWon
- * @date Created on 2018年4月19日
+ * @author xingzhijing
+ * @date Created on 2022年5月18日
  */
 public class HttpClientUtils {
 
@@ -107,6 +111,58 @@ public class HttpClientUtils {
         }
     }
 
+    public static Map<String, String> doGetCookie(String url) throws IOException {
+        // 创建httpClient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+
+        // 创建http对象
+        HttpGet httpGet = new HttpGet(url);
+
+        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
+        httpGet.setConfig(requestConfig);
+        RequestConfig cookieSpecConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
+        httpGet.setConfig(cookieSpecConfig);
+
+        // 创建httpResponse对象
+        CloseableHttpResponse httpResponse = null;
+
+//        创建cookieStore对象
+        BasicCookieStore cookieStore = new BasicCookieStore();
+//        创建HttpclientContext对象
+        HttpClientContext clientContext = HttpClientContext.create();
+//        设置cookieStore
+        clientContext.setCookieStore(cookieStore);
+//        创建HttpClientCookiesResult对象
+        Map<String, String> resultMap = new HashMap<String, String>();
+
+        try {
+            // 执行请求并获得响应结果
+            httpResponse = httpClient.execute(httpGet, clientContext);
+            List<Cookie> cookieList = clientContext.getCookieStore().getCookies();
+            String cookieXsrf = cookieList.stream()
+                    .filter(cookie -> "_xsrf".equals(cookie.getName()))
+                    .findFirst()
+                    .get()
+                    .getValue();
+            String cookieSid = cookieList.stream()
+                    .filter(cookie -> "sid".equals(cookie.getName()))
+                    .findFirst()
+                    .get()
+                    .getValue();
+            //想返回多个参数
+
+            resultMap.put("_xsrf", cookieXsrf);
+            resultMap.put("sid", cookieSid);
+            return resultMap;
+
+        } finally {
+            // 释放资源
+            release(httpResponse, httpClient);
+        }
+
+    }
+
+
     /**
      * 发送post请求；不带请求头和请求参数
      *
@@ -158,7 +214,8 @@ public class HttpClientUtils {
         RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
         httpPost.setConfig(defaultConfig);
         // 设置请求头
-		/*httpPost.setHeader("Cookie", "");
+		/*
+		httpPost.setHeader("Cookie", "");
 		httpPost.setHeader("Connection", "keep-alive");
 		httpPost.setHeader("Accept", "application/json");
 		httpPost.setHeader("Accept-Language", "zh-CN,zh;q=0.9");

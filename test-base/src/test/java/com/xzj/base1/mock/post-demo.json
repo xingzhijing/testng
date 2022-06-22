@@ -1,0 +1,12 @@
+[
+  {
+    "description": "这是没有参数的post请求，通过输入浏览器地址栏直接访问的都是get请求",
+    "request": {
+      "method": "post",
+      "uri": "/post"
+    },
+    "response": {
+      "text": "我是response——这是没有参数的post请求"
+    }
+  }
+]
