@@ -1,30 +1,33 @@
 package com.xzj.get;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @RestController
+@Api(value = "/")
 public class MyGetMethod {
-    @GetMapping(value = "/getCookies")
+    @GetMapping("/getCookies")
+    @ApiOperation(value = "这是无headers 无params的get请求接口", httpMethod = "get")
     public String getCookies(HttpServletResponse response){
         Cookie cookie = new Cookie("login", "true");
         response.addCookie(cookie);
         return "这是返回的cookies信息";
     }
 
+    /**
+     * Method: Get
+     * Headers: 携带cookies访问
+     * Params: null
+     * */
     @GetMapping("/get/with/cookie")
+    @ApiOperation(value = "这是带headers 无params的get请求接口", httpMethod = "get")
     public String getWithCookies(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         if (Objects.isNull(cookies)){
@@ -37,5 +40,21 @@ public class MyGetMethod {
             }
         }
         return "请携带cookie访问";
+    }
+
+    /**
+     * Method: Get
+     * Headers: 携带cookies访问
+     * Params:
+     * */
+    @GetMapping(value = "/get/with/{start}&{end}")
+    @ApiOperation(value = "这是带headers 带params的get请求接口", httpMethod = "get")
+    public Map<String, Integer> getWithParams(@PathVariable Integer start,
+                                              @PathVariable Integer end){
+        Map<String, Integer> map = new HashMap<>();
+        map.put("喜小乐", 12);
+        map.put("鸡小萌", 17);
+        map.put("石敢当", 18);
+        return map;
     }
 }
