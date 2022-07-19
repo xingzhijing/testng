@@ -25,7 +25,7 @@
         <jackson-annotations>2.13.3</jackson-annotations>
         <lombok>1.18.24</lombok>
         <fastjson>1.2.79</fastjson>
-        <httpclient>4.5.13</httpclient>
+        <httpclient.version>4.5.13</httpclient.version>
         <selenium-java>4.1.2</selenium-java>
         <javax.servlet>4.0.1</javax.servlet>
 <!--        mybatis-->
@@ -72,17 +72,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.32</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>com.aventstack</groupId>
