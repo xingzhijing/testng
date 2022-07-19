@@ -32,7 +32,7 @@ import java.util.List;
 public class SwaggerConfig {
     @Bean
     public Docket createRestApi(ApiInfo apiInfo){
-        return new Docket(DocumentationType.OAS_30)
+        return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .groupName("SwaggerGroupOneAPI")
                 .select()
@@ -51,10 +51,11 @@ public class SwaggerConfig {
                 .build();
     }
 
+//    解决springboot2.6.x以上的版本和swagger不兼容的问题
     @Bean
-    public WebMvcEndpointHandlerMapping webEndpointServletHandlerMapping(WebEndpointsSupplier webEndpointsSupplier, ServletEndpointsSupplier servletEndpointsSupplier, ControllerEndpointsSupplier controllerEndpointsSupplier, EndpointMediaTypes endpointMediaTypes, CorsEndpointProperties corsProperties, WebEndpointProperties webEndpointProperties, Environment environment) {
+    public WebMvcEndpointHandlerMapping webEndpointServletHandlerMapping(WebEndpointDiscoverer webEndpointDiscoverer, ServletEndpointsSupplier servletEndpointsSupplier, ControllerEndpointsSupplier controllerEndpointsSupplier, EndpointMediaTypes endpointMediaTypes, CorsEndpointProperties corsProperties, WebEndpointProperties webEndpointProperties, Environment environment) {
         List<ExposableEndpoint<?>> allEndpoints = new ArrayList();
-        Collection<ExposableWebEndpoint> webEndpoints = webEndpointsSupplier.getEndpoints();
+        Collection<ExposableWebEndpoint> webEndpoints = webEndpointDiscoverer.getEndpoints();
         allEndpoints.addAll(webEndpoints);
         allEndpoints.addAll(servletEndpointsSupplier.getEndpoints());
         allEndpoints.addAll(controllerEndpointsSupplier.getEndpoints());

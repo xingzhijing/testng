@@ -2,6 +2,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
+    <test name="test1">
+        <classes>
+            <class name="com.xzj.base1.lft.TestDriver">
+                <methods>
+                    <include name="CreateDriver"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 <!--    <test name="test3">-->
 <!--        <groups>-->
 <!--            <define name="priority">-->

@@ -12,18 +12,61 @@
         <module>test-advance</module>
         <module>test-base</module>
         <module>test-boot</module>
+        <module>test-mysql</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+<!--        testNg-->
+        <testng>7.4.0</testng>
+        <spring-boot-starter>2.7.0</spring-boot-starter>
+        <swagger.version>3.0.0</swagger.version>
+        <jackson-annotations>2.13.3</jackson-annotations>
+        <lombok>1.18.24</lombok>
+        <fastjson>1.2.79</fastjson>
+        <httpclient>4.5.13</httpclient>
+        <selenium-java>4.1.2</selenium-java>
+        <javax.servlet>4.0.1</javax.servlet>
+<!--        mybatis-->
+        <mybatis-spring-boot>2.2.2</mybatis-spring-boot>
+        <mysql-connector-java>8.0.28</mysql-connector-java>
+        <!--        <commons-httpclient>3.1</commons-httpclient>-->
+<!--        log-->
+        <log4j>2.17.2</log4j>
+        <base64>1.15</base64>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.feeclouds.testng</groupId>
+                <artifactId>test-base</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.feeclouds.testng</groupId>
+                <artifactId>test-root</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.feeclouds.testng</groupId>
+                <artifactId>test-advance</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.feeclouds.testng</groupId>
+                <artifactId>test-mysql</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>${testng}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -41,13 +84,11 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.32</version>
         </dependency>
-
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
         </dependency>
-
 
     </dependencies>
 

@@ -60,10 +60,10 @@ public class HttpUtils {
         packageParam(params, httpPost);
 
 //        发送请求
+//        打印了base64参数
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute(httpPost);
         String reponse = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
         JSONObject jsonObject = JSON.parseObject(reponse);
-        System.out.println(jsonObject);
         return jsonObject;
     }
 
@@ -101,7 +101,7 @@ public class HttpUtils {
             }
 
             // 设置到请求的http对象中
-            httpMethod.setEntity(new UrlEncodedFormEntity(nvps));
+            httpMethod.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
         }
     }
 

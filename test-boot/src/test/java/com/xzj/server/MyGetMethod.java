@@ -1,4 +1,4 @@
-package com.xzj.get;
+package com.xzj.server;
 
 
 import io.swagger.annotations.Api;
@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @RestController
+//暂时没发现哪用到
 @Api(value = "/")
 public class MyGetMethod {
     @GetMapping("/getCookies")
-    @ApiOperation(value = "这是无headers 无params的get请求接口", httpMethod = "get")
+    @ApiOperation(value = "这是无headers 无params的get请求接口", httpMethod = "GET")
     public String getCookies(HttpServletResponse response){
         Cookie cookie = new Cookie("login", "true");
         response.addCookie(cookie);
@@ -27,7 +28,7 @@ public class MyGetMethod {
      * Params: null
      * */
     @GetMapping("/get/with/cookie")
-    @ApiOperation(value = "这是带headers 无params的get请求接口", httpMethod = "get")
+    @ApiOperation(value = "这是带headers 无params的get请求接口", httpMethod = "GET")
     public String getWithCookies(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         if (Objects.isNull(cookies)){
@@ -48,7 +49,7 @@ public class MyGetMethod {
      * Params:
      * */
     @GetMapping(value = "/get/with/{start}&{end}")
-    @ApiOperation(value = "这是带headers 带params的get请求接口", httpMethod = "get")
+    @ApiOperation(value = "这是带headers 带params的get请求接口", httpMethod = "GET")
     public Map<String, Integer> getWithParams(@PathVariable Integer start,
                                               @PathVariable Integer end){
         Map<String, Integer> map = new HashMap<>();

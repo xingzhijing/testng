@@ -8,9 +8,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="test-boot" />
         <module name="test-base" />
         <module name="test-advance" />
+        <module name="test-mysql" />
+        <module name="test-boot" />
       </profile>
     </annotationProcessing>
   </component>
