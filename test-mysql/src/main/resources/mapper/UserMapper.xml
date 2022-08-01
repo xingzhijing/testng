@@ -37,7 +37,8 @@
     <update id="updateUser" parameterType="com.xzj.mysql.entity.User">
         update user
         <trim prefix="set" suffixOverrides=",">
-            <if test="userName != null">userName=#{userName},</if>
+            id=#{id},
+            <if test="userName != null">user_name=#{userName},</if>
             <if test="age != null">age=#{age},</if>
             <if test="address != null">address=#{address},</if>
         </trim>

@@ -1,22 +1,26 @@
 package com.xzj.mysql.dto;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
 @Data
+@Accessors(chain = true)
 public class UserDTO {
 
-    private long id;
+    private Long id;
 
     private String userName;
 
-    private int age;
+    private Integer age;
 
     private String address;
 
     private Date createTime;
 
     private Date updateTime;
+
+    private String bizId;
 }
 

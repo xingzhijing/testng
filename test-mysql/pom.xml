@@ -12,6 +12,11 @@
     <artifactId>test-mysql</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.feeclouds.testng</groupId>
+            <artifactId>test-common</artifactId>
+        </dependency>
+
 <!--        spring-boot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

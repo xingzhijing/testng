@@ -8,7 +8,9 @@ public interface UserService {
 
     UserDTO getUser(Long userId);
 
-    Long addUser(User user);
+    Long addUser(UserDTO user);
 
-    Long updateUser(User user);
+    Long updateUser(UserDTO user);
+
+    UserDTO getUserByBizId(String bizId);
 }

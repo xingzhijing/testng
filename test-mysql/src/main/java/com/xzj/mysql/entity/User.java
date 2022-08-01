@@ -7,11 +7,11 @@ import java.util.Date;
 @Data
 public class User {
 
-    private long id;
+    private Long id;
 
     private String userName;
 
-    private int age;
+    private Integer age;
 
     private String address;
 

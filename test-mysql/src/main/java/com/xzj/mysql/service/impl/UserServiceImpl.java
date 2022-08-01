@@ -22,14 +22,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long addUser(User user) {
+    public Long addUser(UserDTO dto) {
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
         userMapper.insertUser(user);
         return user.getId();
     }
 
     @Override
-    public Long updateUser(User user){
+    public Long updateUser(UserDTO dto){
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
         userMapper.updateUser(user);
         return user.getId();
+    }
+
+    @Override
+    public UserDTO getUserByBizId(String bizId) {
+        return new UserDTO().setBizId(bizId);
     }
 }

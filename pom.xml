@@ -12,6 +12,7 @@
         <module>test-advance</module>
         <module>test-base</module>
         <module>test-boot</module>
+        <module>test-common</module>
         <module>test-mysql</module>
     </modules>
 
@@ -42,22 +43,27 @@
             <dependency>
                 <groupId>com.feeclouds.testng</groupId>
                 <artifactId>test-base</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.feeclouds.testng</groupId>
                 <artifactId>test-root</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.feeclouds.testng</groupId>
                 <artifactId>test-advance</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.feeclouds.testng</groupId>
                 <artifactId>test-mysql</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.feeclouds.testng</groupId>
+                <artifactId>test-common</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
