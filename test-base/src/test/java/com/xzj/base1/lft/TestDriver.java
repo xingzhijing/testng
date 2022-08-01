@@ -42,13 +42,13 @@ public class TestDriver {
         params.put("idCard", "142625199808202862");
         params.put("idCardEffectStart", DateUtils.localDateFormat(LocalDate.now().minusDays(1), "yyyy-MM-dd"));
         params.put("idCardEffectEnd", DateUtils.localDateFormat(LocalDate.now(), "yyyy-MM-dd"));
-//        params.put("idCardFaceFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
-//        params.put("idCardGuohuiFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("idCardFaceFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("idCardGuohuiFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
         params.put("bankAccount", "6212262502009182455");
         params.put("bankAccountName", "绿萝");
         params.put("bank", "招商银行北京西直门支行");
-//        params.put("drivingLicenseFirstFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
-//        params.put("drivingLicenseSecondFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("drivingLicenseFirstFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("drivingLicenseSecondFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
 
         params.put("drivingLicenseFirstEffect", DateUtils.localDateFormat(LocalDate.now().minusYears(1), "yyyy-MM-dd"));
         params.put("drivingLicenseEffectDate", "2022-08-21T2022-08-22");
@@ -57,16 +57,9 @@ public class TestDriver {
         params.put("NVQEffectDate", "2022-03-21T2022-03-22");
         params.put("NVQNo", "411082199506054818");
         params.put("state", "1");
-//        params.put("serviceAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
-//        params.put("entrustmentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
-//        params.put("taxPaymentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
-        params.put("serviceAgreement", "123");
-        params.put("entrustmentAgreement", "123");
-        params.put("taxPaymentAgreement", "231");
-        params.put("drivingLicenseFirstFile", "123");
-        params.put("drivingLicenseSecondFile", "123");
-        params.put("idCardFaceFile", "123");
-        params.put("idCardGuohuiFile", "123");
+        params.put("serviceAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
+        params.put("entrustmentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
+        params.put("taxPaymentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
         params.put("sign",  CreateSignUtils.invokeFee(params));
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 //        设置不校验签名
