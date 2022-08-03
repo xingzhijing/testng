@@ -10,8 +10,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="test-base" />
         <module name="test-advance" />
+        <module name="test-case" />
         <module name="test-mysql" />
         <module name="test-boot" />
+        <module name="test-common" />
       </profile>
     </annotationProcessing>
   </component>

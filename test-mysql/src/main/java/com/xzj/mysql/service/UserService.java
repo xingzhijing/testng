@@ -12,5 +12,6 @@ public interface UserService {
 
     Long updateUser(UserDTO user);
 
-    UserDTO getUserByBizId(String bizId);
+    Long deleteUserById(Long userId);
+
 }

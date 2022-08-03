@@ -11,7 +11,23 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.xzj.mysql.mapper
   configuration:
-    og-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#测试环境地址
+test:
+  url: http://8.141.174.255:8084
+#  登录接口
+  login: /login
+#  新增用户
+  add.user: /user/add
+#  删除用户
+  deleter.user: /user/delete
+#  编辑用户
+  update.user: /user/update
+#  查询用户
+  find.user: /user/find
+
+
 
 #logging:
 #  file:

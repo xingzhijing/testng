@@ -52,8 +52,8 @@ public final class Result<T> implements Serializable {
   public Result(T data) {
     success = true;
     this.data = data;
-    code = "";
-    msg = "";
+    code = "0";
+    msg = "成功";
   }
 
   public Result(String code, String msg) {
@@ -76,7 +76,7 @@ public final class Result<T> implements Serializable {
   }
 
   public static <T> Result<T> succeed() {
-    return new Result(true, "200", "");
+    return new Result(true, "0", "成功");
   }
 
   /**
@@ -87,7 +87,7 @@ public final class Result<T> implements Serializable {
    * @return
    */
   public static <T> Result<T> succeed(T data) {
-    return new Result<T>(true, "200", "", data);
+    return new Result<T>(true, "0", "成功", data);
   }
 
   /**

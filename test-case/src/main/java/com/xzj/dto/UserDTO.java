@@ -1,4 +1,4 @@
-package com.xzj.mysql.dto;
+package com.xzj.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
