@@ -1,32 +1,33 @@
-spring:
-  application:
-    name: myTest
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-2ze1x558eym511827po.mysql.rds.aliyuncs.com:3306/db_xzj_test?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
-    username: test_8
-    password: 1qaz@WSX
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.xzj.mysql.mapper
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#spring:
+#  application:
+#    name: myTest
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://rm-2ze1x558eym511827po.mysql.rds.aliyuncs.com:3306/db_xzj_test?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+#    username: test_8
+#    password: 1qaz@WSX
+#
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.xzj.mysql.mapper
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #测试环境地址
-test:
+configfile:
   url: http://8.141.174.255:8084
-#  登录接口
+  登录接口
   login: /login
-#  新增用户
-  add.user: /user/add
-#  删除用户
-  deleter.user: /user/delete
-#  编辑用户
-  update.user: /user/update
-#  查询用户
-  find.user: /user/find
-
+#  业务接口
+  user:
+    #  新增用户
+    add: /user/add
+    #  删除用户
+    deleter: /user/delete
+    #  编辑用户
+    update: /user/update
+    #  查询用户
+    find: /user/find
 
 
 #logging:
