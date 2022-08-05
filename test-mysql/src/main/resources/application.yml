@@ -3,7 +3,7 @@ mybatis:
   type-aliases-package: com.xzj.mysql.mapper
   configuration:
     og-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+#123
 #logging:
 #  file:
 #    name: logs/mylog.log
