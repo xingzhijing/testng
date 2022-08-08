@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<suit name="case">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="case">
     <test name="user">
+        <groups>
+            <define name="login">
+                <include name="loginTrue">
+                    <class name="com.xzj.cases.LoginTest"/>
+                </include>
+            </define>
+        </groups>
     </test>
-</suit>
+</suite>

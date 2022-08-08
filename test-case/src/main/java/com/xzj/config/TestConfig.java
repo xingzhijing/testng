@@ -1,8 +1,11 @@
 package com.xzj.config;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TestConfig {
-    private static String addUserUrl;
-    private static String getUserInfoUrl;
-    private static String getUserListUrl;
-    private static String updateUserInfoUrl;
+    public static String addUserUrl;
+    public static String deleteUserUrl;
+    public static String getUserInfoUrl;
+    public static String updateUserInfoUrl;
 }
