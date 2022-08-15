@@ -1,4 +1,4 @@
-package com.xzj.mysql;
+package com.xzj.mysql.config;
 
 import org.springframework.context.annotation.Configuration;
 

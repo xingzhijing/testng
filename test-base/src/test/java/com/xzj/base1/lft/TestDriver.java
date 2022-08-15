@@ -22,7 +22,7 @@ public class TestDriver {
 //    生产
     private final String company_key = "af6bce91-0eec-409b-9627-754d23dd087c";
     private final String nonce_str = "z0SWco";
-    private final String testTax = "123456789098765";
+//    private final String testTax = "123456789098765";
     private final String prodTax = "911101083065625168";
     private final Logger logger = Logger.getLogger(CreateSignUtils.class);
 
@@ -38,7 +38,7 @@ public class TestDriver {
         params.put("taxno", prodTax);
         params.put("driverName", "菠菜");
         params.put("sex", "1");
-        params.put("phoneNum", "15301322686");
+        params.put("phoneNum", "15301322667");
         params.put("idCard", "142625199808202862");
         params.put("idCardEffectStart", DateUtils.localDateFormat(LocalDate.now().minusDays(1), "yyyy-MM-dd"));
         params.put("idCardEffectEnd", DateUtils.localDateFormat(LocalDate.now(), "yyyy-MM-dd"));
@@ -57,15 +57,15 @@ public class TestDriver {
         params.put("NVQEffectDate", "2022-03-21T2022-03-22");
         params.put("NVQNo", "411082199506054818");
         params.put("state", "1");
-        params.put("serviceAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
-        params.put("entrustmentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
-        params.put("taxPaymentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/3.pdf"));
+        params.put("serviceAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("entrustmentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("taxPaymentAgreement", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
         params.put("sign",  CreateSignUtils.invokeFee(params));
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 //        设置不校验签名
-//        headers.put("twgdh", "xjdmg");
+        headers.put("twgdh", "xjdmg");
         JSONObject jsonObject = HttpUtils.doPost(createDriverApi, headers, params);
-//        System.out.println(params);
+//        System.out.println(params.get());
         System.out.println(jsonObject);
     }
 
@@ -76,10 +76,10 @@ public class TestDriver {
         params.put("company_key", company_key);
         params.put("nonce_str", nonce_str);
 //        测试
-        params.put("taxno", testTax);
+//        params.put("taxno", testTax);
 //        生产
-//        params.put("taxno", prodTax);
-        params.put("plateNum", "京ALB0" + (int)(Math.random()*100));
+        params.put("taxno", prodTax);
+        params.put("plateNum", "京ALB1" + (int)(Math.random()*100));
         params.put("vehicleType", "一型货车");
         params.put("nuclearWeight", "10.02");
         params.put("totalWeight", "10.01");
@@ -96,26 +96,27 @@ public class TestDriver {
 //        设置不校验签名
         headers.put("twgdh", "xjdmg");
         JSONObject jsonObject = HttpUtils.doPost(createCarApi, headers, params);
-        logger.info(params);
-//        System.out.println(params);
+//        logger.info(params);
+
+        System.out.println(params.get("plateNum"));
 
         System.out.println(jsonObject);
     }
 
     @Test(enabled = true, priority = 2)
     public void CreateOrder() throws IOException {
-        String createOrderApi = ResourceConfig.getUrl("application", "test.lft", "create.order");
+        String createOrderApi = ResourceConfig.getUrl("application", "prod.lft", "create.order");
         Map<String, String> params = new HashMap<>();
 
         params.put("company_key", company_key);
         params.put("nonce_str", nonce_str);
 //        测试
-        params.put("taxno", testTax);
+//        params.put("taxno", testTax);
 //        生产
-//        params.put("taxno", prodTax);
+        params.put("taxno", prodTax);
         params.put("orderNum", "YD20220713" + (int)(Math.random()*10000));
-        params.put("idCard", "142625199808202662");
-        params.put("plateNum", "京ALB094");
+        params.put("idCard", "142625199808202862");
+        params.put("plateNum", "京ALB156");
 //        params.put("plateColor", "1");
         params.put("sendAddress", "北京市海淀区");
         params.put("sendTime", DateUtils.localDateTimeFormat(LocalDateTime.now().minusDays(1), "yyyy-MM-dd HH:mm:ss"));
@@ -125,7 +126,7 @@ public class TestDriver {
         params.put("consignor", "百合");
         params.put("chargeType", "0");
 //        运输合同附件
-        params.put("protocolFileFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+        params.put("protocolFileFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.pdf"));
         params.put("sendUserName", "绿萝");
         params.put("sendUserPhone", "15300002678");
         params.put("pickUpTime", DateUtils.localDateTimeFormat(LocalDateTime.now().minusDays(1), "yyyy-MM-dd HH:mm:ss"));
@@ -142,8 +143,6 @@ public class TestDriver {
 //        设置不校验签名
 //        headers.put("twgdh", "xjdmg");
         JSONObject jsonObject = HttpUtils.doPost(createOrderApi, headers, params);
-//        System.out.println(params);
-        logger.info(params);
         System.out.println(params.get("orderNum"));
         System.out.println(jsonObject);
     }
@@ -197,7 +196,11 @@ public class TestDriver {
             payMap.put("transferAmount", "1000");
             payMap.put("payAccount", "11050163030000000549");
             payMap.put("payName", "智运通（北京）科技有限责任公司");
-            payMap.put("bankReceiptFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+            payMap.put("bankReceiptFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.pdf"));
+//            转账凭证流水号 必填
+            payMap.put("serialNo", "9876543210");
+//            其他银行流水信息 非必填
+            payMap.put("extraInfo", "https://www.feeclouds.com");
             payList.add(payMap);
         }
         return payList;
