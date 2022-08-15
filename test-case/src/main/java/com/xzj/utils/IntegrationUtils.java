@@ -1,6 +1,8 @@
 package com.xzj.utils;
 
 import com.xzj.dto.InterfaceName;
+import com.xzj.utils.properties.TestEnvProperties;
+import com.xzj.utils.properties.UserProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +14,15 @@ import static com.xzj.dto.InterfaceName.*;
 @Component
 public class IntegrationUtils {
     @Autowired
-   TestEnvProperties testEnvProperties;
+    TestEnvProperties testEnvProperties;
 
     @Autowired
     UserProperties userProperties;
 
     /**
      * 组装接口url
+     *
+     * @param: 接口key的enum
      * */
     public String integrationUrl(InterfaceName interfaceName){
         String testEnvUrl = testEnvProperties.getUrl();
@@ -34,7 +38,12 @@ public class IntegrationUtils {
             interfaceUrl = testEnvUrl + userProperties.getFind();
         }else if (interfaceName == HOMEPAGE){
             interfaceUrl = testEnvUrl + userProperties.getHomepage();
-        }else {
+        }else if (interfaceName == ETC_CARD){
+            interfaceUrl = testEnvUrl + userProperties.getEtcCard();
+        }else if (interfaceName == ETC_CARD_EXPORT){
+            interfaceUrl = testEnvUrl + userProperties.getEtcCardExport();
+        }
+        else {
             return testEnvUrl;
         }
         return interfaceUrl;

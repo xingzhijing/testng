@@ -1,4 +1,4 @@
-package com.xzj.utils;
+package com.xzj.utils.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

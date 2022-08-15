@@ -1,16 +1,16 @@
 package com.xzj.cases;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.xzj.ServletInitializer;
-import com.xzj.config.TestConfig;
 import com.xzj.utils.HttpUtils;
 import com.xzj.utils.IntegrationUtils;
-import com.xzj.utils.TestEnvProperties;
+import com.xzj.utils.properties.TestEnvProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class LoginTest extends AbstractTestNGSpringContextTests{
     }
 
 
-    @Test(description = "homepage接口")
+    @Test(description = "homepage接口", enabled = false)
     public void testApi() throws IOException {
         String homepage = integrationUtils.integrationUrl(HOMEPAGE);
         Map<String, String> params = new HashMap<>();
@@ -65,6 +65,36 @@ public class LoginTest extends AbstractTestNGSpringContextTests{
         JSONObject jsonObject = HttpUtils.doPost(homepage, headers, params);
         System.out.println(jsonObject);
     }
+
+//    @Test(description = "etc卡管理接口")
+    @DataProvider(name = "ids_key")
+    public Object[][] testEtcCard() throws IOException {
+//        String etcCard = integrationUtils.integrationUrl(ETC_CARD);
+        Map<String, String> params = new HashMap<>();
+        params.put("_xsrf", _xsrf);
+        params.put("select_all", "1");
+        JSONObject jsonObject = HttpUtils.doPost(integrationUtils.integrationUrl(ETC_CARD), headers, params);
+        System.out.println(jsonObject);
+        return new Object[][]{{jsonObject}};
+    }
+
+    @Test(dataProvider = "ids_key", description = "etc卡管理列表导出")
+    public void testExportCard(JSONObject idsKey) throws IOException {
+//        拿到接口返回的ids_key
+        String data = idsKey.getString("data");
+        JSONObject jsonObject = JSON.parseObject(data);
+        System.out.println("ids_key: " + jsonObject.getString("ids_key"));
+//        开始调接口
+        Map<String, String> exportParamsMap = new HashMap<>();
+        exportParamsMap.put("_xsrf", _xsrf);
+        exportParamsMap.put("ids_key", jsonObject.getString("ids_key"));
+        JSONObject result = HttpUtils.doPost(integrationUtils.integrationUrl(ETC_CARD_EXPORT), headers, exportParamsMap);
+        System.out.println(result);
+    }
+
+
+
+
 
 //    @BeforeTest(groups = "loginTrue", description = "登录成功")
 //    public void beforeTest(){

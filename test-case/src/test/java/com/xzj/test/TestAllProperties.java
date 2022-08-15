@@ -1,8 +1,8 @@
 package com.xzj.test;
 
 import com.xzj.ServletInitializer;
-import com.xzj.utils.TestEnvProperties;
-import com.xzj.utils.UserProperties;
+import com.xzj.utils.properties.TestEnvProperties;
+import com.xzj.utils.properties.UserProperties;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
