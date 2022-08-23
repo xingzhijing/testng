@@ -38,27 +38,31 @@ public class HttpUtils {
      * @return
      * @throws Exception
      */
-//    public static HttpClientResult doPost(String url) throws Exception {
-//        return doPost(url, null, null);
-//    }
+    public static JSONObject doPost(String url, Map<String, String> params) throws Exception {
+        return doPost(url, null, params);
+    }
 
     /**
      * 发送post请求；带请求参数
      *
      * @param url 请求地址
-     * @param headers  请求头
+     * @param headerMap  请求头
      * @param params 参数集合
      * @return
      * @throws Exception
      */
-    public static JSONObject doPost(String url, Map<String, String> headers, Map<String, String> params) throws IOException {
+    public static JSONObject doPost(String url, Map<String, String> headerMap, Map<String, String> params) throws IOException {
         HttpPost httpPost = new HttpPost(url);
+//        如果 headers 中没有该 key，则返回默认值
+        headerMap.put("Content-Type", headerMap.getOrDefault("Content-Type", "application/x-www-form-urlencoded"));
         RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
         httpPost.setConfig(defaultConfig);
-        packageHeader(headers, httpPost);
+        packageHeader(headerMap, httpPost);
 //        设置参数
         packageParam(params, httpPost);
+
 //        发送请求
+//        打印了base64参数
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute(httpPost);
         String reponse = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
         JSONObject jsonObject = JSON.parseObject(reponse);
@@ -102,15 +106,14 @@ public class HttpUtils {
         }
     }
 
-    /**
-     * 获取页面的参数
-     * _xsrf, sid
-     * */
+
     public static Map<String, String> doGetToSid(String url) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         // 创建http对象
         HttpGet httpGet = new HttpGet(url);
 
+//        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
+//        httpGet.setConfig(requestConfig);
         RequestConfig cookieSpecConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
         httpGet.setConfig(cookieSpecConfig);
 
@@ -140,8 +143,8 @@ public class HttpUtils {
                     .findFirst()
                     .get()
                     .getValue();
-
             //想返回多个参数
+
             resultMap.put("_xsrf", cookieXsrf);
             resultMap.put("sid", cookieSid);
             return resultMap;
@@ -150,6 +153,11 @@ public class HttpUtils {
             System.out.println(e);
             return null;
         }
+//        finally {
+//            // 释放资源
+//            release(httpResponse, httpClient);
+//        }
+
     }
 
 
@@ -179,6 +187,7 @@ public class HttpUtils {
                 .get()
                 .getValue()
                 .split(";")[0];
+//        System.out.println(Authorization);
         return authorization;
     }
 
@@ -200,4 +209,3 @@ public class HttpUtils {
     }
 
 }
-

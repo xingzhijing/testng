@@ -23,10 +23,13 @@ import java.util.Map;
 public class CreateSignUtils {
 //    测试
 //    private static String company_key = "2fac02a6-b85d-4e3f-986d-d742e8354c04";
+//    1941
 //    private static String c_secret = "bf7cabfb-d3bc-4d2e-b555-44c4fd864db0";
+//    1939
+    private static String c_secret = "f21e6d76-b47e-4c62-96d1-63a19a5f4116";
 //    生产
-    private static String company_key = "af6bce91-0eec-409b-9627-754d23dd087c";
-    private static String c_secret = "b04be205-3953-4e9c-b037-1fae320c33ca";
+//    private static String company_key = "af6bce91-0eec-409b-9627-754d23dd087c";
+//    private static String c_secret = "b04be205-3953-4e9c-b037-1fae320c33ca";
 
     public static String invokeFee(@NotNull Map<String, String> kvMap) {
         Logger logger = Logger.getLogger(CreateSignUtils.class);

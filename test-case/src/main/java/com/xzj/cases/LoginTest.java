@@ -66,10 +66,8 @@ public class LoginTest extends AbstractTestNGSpringContextTests{
         System.out.println(jsonObject);
     }
 
-//    @Test(description = "etc卡管理接口")
     @DataProvider(name = "ids_key")
     public Object[][] testEtcCard() throws IOException {
-//        String etcCard = integrationUtils.integrationUrl(ETC_CARD);
         Map<String, String> params = new HashMap<>();
         params.put("_xsrf", _xsrf);
         params.put("select_all", "1");
@@ -79,15 +77,14 @@ public class LoginTest extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dataProvider = "ids_key", description = "etc卡管理列表导出")
-    public void testExportCard(JSONObject idsKey) throws IOException {
+    public void testExportCard(JSONObject response) throws IOException {
 //        拿到接口返回的ids_key
-        String data = idsKey.getString("data");
-        JSONObject jsonObject = JSON.parseObject(data);
-        System.out.println("ids_key: " + jsonObject.getString("ids_key"));
+        String idsKey = response.getJSONObject("data").getString("ids_key");
+        System.out.println("ids_key: " + idsKey);
 //        开始调接口
         Map<String, String> exportParamsMap = new HashMap<>();
         exportParamsMap.put("_xsrf", _xsrf);
-        exportParamsMap.put("ids_key", jsonObject.getString("ids_key"));
+        exportParamsMap.put("ids_key", idsKey);
         JSONObject result = HttpUtils.doPost(integrationUtils.integrationUrl(ETC_CARD_EXPORT), headers, exportParamsMap);
         System.out.println(result);
     }
