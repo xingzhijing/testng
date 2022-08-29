@@ -370,7 +370,6 @@ public class HttpClientUtils {
             if (httpResponse.getEntity() != null) {
                 content = EntityUtils.toString(httpResponse.getEntity(), ENCODING);
             }
-            System.out.println(JSON.parse(content).toString());
             return new HttpClientResult(httpResponse.getStatusLine().getStatusCode(), content);
         }
         return new HttpClientResult(HttpStatus.SC_INTERNAL_SERVER_ERROR);

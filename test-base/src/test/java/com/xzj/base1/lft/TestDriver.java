@@ -43,7 +43,7 @@ public class TestDriver {
         params.put("driverName", "菠菜");
         params.put("sex", "1");
         params.put("phoneNum", "15301322687");
-        params.put("idCard", "142625199808202862");
+        params.put("idCard", "142625199808202822");
         params.put("idCardEffectStart", DateUtils.localDateFormat(LocalDate.now().minusDays(1), "yyyy-MM-dd"));
         params.put("idCardEffectEnd", DateUtils.localDateFormat(LocalDate.now(), "yyyy-MM-dd"));
         params.put("idCardFaceFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));

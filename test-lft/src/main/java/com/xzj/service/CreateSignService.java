@@ -20,6 +20,8 @@ public class CreateSignService {
 
     public String invokeFee(@NonNull Map<String, String> kvMap) {
         Logger logger = Logger.getLogger(CreateSignService.class);
+//        TODO taxNo:其实不是通用化参数，后面再调整
+        kvMap.put("taxno", testProperties.getTax());
         kvMap.put("company_key", testProperties.getCompanyKey());
         //6位随机字符串
         kvMap.put("nonce_str", RandomStrUtils.getRandomStr(6));

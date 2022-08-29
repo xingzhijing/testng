@@ -39,6 +39,18 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
@@ -52,15 +64,9 @@
 
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-context</artifactId>-->
+<!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
 <!--            <version>${spring-cloud.version}</version>-->
 <!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-            <version>${spring-cloud.version}</version>
-        </dependency>
 
     </dependencies>
 

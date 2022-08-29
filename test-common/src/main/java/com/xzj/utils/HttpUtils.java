@@ -35,6 +35,7 @@ public class HttpUtils {
      * 发送post请求；带请求参数
      *
      * @param url 请求地址
+     * @param params 请求参数
      * @return
      * @throws Exception
      */
@@ -53,16 +54,13 @@ public class HttpUtils {
      */
     public static JSONObject doPost(String url, Map<String, String> headerMap, Map<String, String> params) throws IOException {
         HttpPost httpPost = new HttpPost(url);
-//        如果 headers 中没有该 key，则返回默认值
-        headerMap.put("Content-Type", headerMap.getOrDefault("Content-Type", "application/x-www-form-urlencoded"));
         RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
         httpPost.setConfig(defaultConfig);
+//        设置请求头
         packageHeader(headerMap, httpPost);
 //        设置参数
         packageParam(params, httpPost);
-
 //        发送请求
-//        打印了base64参数
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute(httpPost);
         String reponse = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
         JSONObject jsonObject = JSON.parseObject(reponse);
