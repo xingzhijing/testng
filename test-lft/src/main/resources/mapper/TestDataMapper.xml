@@ -10,7 +10,7 @@
 <!--    </sql>-->
 
     <resultMap id="TestDataMap" type="com.xzj.dto.TestDataDTO">
-        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="protocol" jdbcType="VARCHAR" property="protocol"/>
         <result column="category" jdbcType="VARCHAR" property="category"/>
         <result column="uri" jdbcType="VARCHAR" property="uri"/>
