@@ -1,10 +1,10 @@
-package com.xzj.dto;
+package com.xzj.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 @Data
-public class TestDataDTO {
+public class TestData {
     private Integer id;
 
 //    协议类型

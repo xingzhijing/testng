@@ -18,11 +18,9 @@ public class CreateSignService {
     @Autowired
     TestProperties testProperties;
 
-    public String invokeFee(@NonNull Map<String, String> kvMap) {
+    public String invokeFee(@NonNull Map<String, String> kvMap,
+                            @NonNull String companySecret) {
         Logger logger = Logger.getLogger(CreateSignService.class);
-//        TODO taxNo:其实不是通用化参数，后面再调整
-        kvMap.put("taxno", testProperties.getTax());
-        kvMap.put("company_key", testProperties.getCompanyKey());
         //6位随机字符串
         kvMap.put("nonce_str", RandomStrUtils.getRandomStr(6));
         Map<String, Object> resultMap = new HashMap<>();
@@ -39,7 +37,7 @@ public class CreateSignService {
             }
             params.append(URLEncoder.encode("company_secret", StandardCharsets.UTF_8));
             params.append("=");
-            params.append(URLEncoder.encode(testProperties.getCompanySecret(), StandardCharsets.UTF_8));
+            params.append(URLEncoder.encode(companySecret, StandardCharsets.UTF_8));
 //            System.out.println("参数排序后为: " + params.toString());
             String md5 = DigestUtils.md5DigestAsHex(params.toString().getBytes(StandardCharsets.UTF_8)).toUpperCase();
             resultMap.put("sign", md5);

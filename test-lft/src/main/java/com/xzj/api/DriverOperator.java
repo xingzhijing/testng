@@ -62,7 +62,9 @@ public class DriverOperator extends AbstractTestNGSpringContextTests {
         params.put("serviceAgreement", driver.getServiceAgreement());
         params.put("entrustmentAgreement", driver.getEntrustmentAgreement());
         params.put("taxPaymentAgreement", driver.getTaxPaymentAgreement());
-        params.put("sign",  createSignService.invokeFee(params));
+        //TODO companySecret没有值
+        String companySecret = "";
+        params.put("sign",  createSignService.invokeFee(params, companySecret));
 //        请求头设置
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 //        设置后不校验签名

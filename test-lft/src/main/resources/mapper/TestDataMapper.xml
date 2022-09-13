@@ -9,25 +9,35 @@
 <!--        id, protocol, category, uri, methods, parameters, description, isRun, expectResult, actualResult-->
 <!--    </sql>-->
 
-    <resultMap id="TestDataMap" type="com.xzj.dto.TestDataDTO">
+<!--    <resultMap id="TestDataMap" type="com.xzj.dto.TestDataDTO">-->
+<!--        <result column="id" jdbcType="INTEGER" property="id" javaType="INTEGER"/>-->
+<!--        <result column="protocol" jdbcType="VARCHAR" property="protocol" javaType="String"/>-->
+<!--        <result column="category" jdbcType="VARCHAR" property="category" javaType="String"/>-->
+<!--        <result column="uri" jdbcType="VARCHAR" property="uri" javaType="String"/>-->
+<!--        <result column="method" jdbcType="VARCHAR" property="methods" javaType="String"/>-->
+<!--        <result column="parameters" jdbcType="VARCHAR" property="parameters" javaType="String"/>-->
+<!--        <result column="descriptions" jdbcType="VARCHAR" property="description" javaType="String"/>-->
+<!--        <result column="is_run" jdbcType="VARCHAR" property="isRun" javaType="String"/>-->
+<!--        <result column="expect_result" jdbcType="VARCHAR" property="expectResult" javaType="String"/>-->
+<!--        <result column="actual_result" jdbcType="VARCHAR" property="actualResult" javaType="String"/>-->
+<!--    </resultMap>-->
+    <resultMap id="TestDataMap" type="com.xzj.entity.TestData">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="protocol" jdbcType="VARCHAR" property="protocol"/>
         <result column="category" jdbcType="VARCHAR" property="category"/>
         <result column="uri" jdbcType="VARCHAR" property="uri"/>
-        <result column="method" jdbcType="VARCHAR" property="methods" />
-        <result column="parameters" jdbcType="VARCHAR" property="parameters" />
-        <result column="description" jdbcType="VARCHAR" property="description" />
-        <result column="is_run" jdbcType="INTEGER" property="isRun" />
-        <result column="expect_result" jdbcType="VARCHAR" property="expectResult" />
-        <result column="actual_result" jdbcType="VARCHAR" property="actualResult" />
+        <result column="method" jdbcType="VARCHAR" property="methods"/>
+<!--        parameters为json类型-->
+<!--        <result column="parameters" property="parameters" typeHandler="com.xzj.handler.MySqlJsonHandler"/>-->
+        <result column="parameters" jdbcType="VARCHAR"  property="parameters"/>
+        <result column="descriptions" jdbcType="VARCHAR" property="descriptions"/>
+        <result column="is_run" jdbcType="VARCHAR" property="isRun"/>
+        <result column="expect_result" jdbcType="VARCHAR" property="expectResult"/>
+        <result column="actual_result" jdbcType="VARCHAR" property="actualResult"/>
     </resultMap>
 
     <select id="findTestDataById" parameterType="String" resultMap="TestDataMap">
-<!--        select-->
-<!--        <include refid="selectTestDataOne"/>-->
-<!--        from api_test_data_demo-->
-<!--        where id = #{id}-->
-        #{value};
+        ${value}
     </select>
 
 </mapper>

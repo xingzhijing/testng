@@ -37,7 +37,8 @@
         <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
-        <!--        <commons-httpclient>3.1</commons-httpclient>-->
+<!--        mybatis-plus 映射mysql的json字段-->
+        <jackson-databind>2.13.3</jackson-databind>
 <!--        log-->
         <log4j.version>2.17.2</log4j.version>
         <logback.version>1.2.11</logback.version>

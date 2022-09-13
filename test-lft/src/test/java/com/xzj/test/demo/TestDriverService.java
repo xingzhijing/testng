@@ -2,6 +2,7 @@ package com.xzj.test.demo;
 
 import com.xzj.LFTApplication;
 import com.xzj.dto.TestDataDTO;
+import com.xzj.entity.TestData;
 import com.xzj.service.TestDriverDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,9 +28,9 @@ public class TestDriverService extends AbstractTestNGSpringContextTests {
         this.sql = sql;
     }
 
-    @DataProvider(name = "driver")
+    @DataProvider(name = "testData")
     public Object[][] getDriverData(){
-        List<TestDataDTO> mapList = testDriverDataService.getTestDriverDataOneById(sql);
+        List<TestData> mapList = testDriverDataService.getTestDriverDataOneById(sql);
         Object[][] objects = new Object[mapList.size()][];
         for (int i = 0; i < mapList.size(); i++) {
             objects[i] = new Object[]{mapList.get(i)};
@@ -37,9 +38,9 @@ public class TestDriverService extends AbstractTestNGSpringContextTests {
         return objects;
     }
 
-    @Test(dataProvider = "driver")
-    public void testDriverDataService(Map<String, String> data){
-        System.out.println(data);
+    @Test(dataProvider = "testData")
+    public void testDriverDataService(TestData testData){
+        System.out.println(testData);
     }
 
 }

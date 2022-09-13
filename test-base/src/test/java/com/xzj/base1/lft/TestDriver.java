@@ -32,7 +32,7 @@ public class TestDriver {
 
     @Test(enabled = true, priority = 0)
     public void CreateDriver() throws IOException {
-        String createDriverApi = ResourceConfig.getUrl("application", "test.lft", "create.driver");
+        String createDriverApi = ResourceConfig.getUrl("application", "prod.lft", "create.driver");
         Map<String, String> params = new HashMap<>();
         params.put("company_key", company_key);
         params.put("nonce_str",  nonce_str);
@@ -75,7 +75,7 @@ public class TestDriver {
 
     @Test(enabled = true, priority = 1)
     public void CreateCar() throws IOException {
-        String createCarApi = ResourceConfig.getUrl("application", "test.lft", "create.car");
+        String createCarApi = ResourceConfig.getUrl("application", "prod.lft", "create.car");
         Map<String, String> params = new HashMap<>();
         params.put("company_key", company_key);
         params.put("nonce_str", nonce_str);

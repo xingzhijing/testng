@@ -4,8 +4,11 @@
     <test name="testDriverDataDemo">
         <parameter name="sql"
                    value="select * from api_test_data_demo where id = 1;"/>
+<!--        <parameter name="id" value="1"/>-->
         <classes>
-            <class name="com.xzj.service.TestDriverDataService"/>
+<!--            <class name="com.xzj.service.TestDriverDataService"/>-->
+<!--            <class name="com.xzj.test.demo.TestDriverService"/>-->
+            <class name="com.xzj.test.demo.TestCaseService"/>
         </classes>
     </test>
 
