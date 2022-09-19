@@ -52,7 +52,7 @@ public class CaseServiceImpl extends ServiceImpl<CaseMapper,CaseData> implements
     @Override
     public JSONArray getCaseListByParam(String protocol) throws IOException {
         LambdaQueryWrapper<CaseData> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        LambdaUpdateChainWrapper<CaseData> lambdaUpdateChainWrapper = new LambdaUpdateChainWrapper<>(caseMapper);
+//        LambdaUpdateChainWrapper<CaseData> lambdaUpdateChainWrapper = new LambdaUpdateChainWrapper<>(caseMapper);
         lambdaQueryWrapper.eq(CaseData::getHost, protocol);
 //        查询测试数据
         List<CaseData> caseDataList = caseMapper.getCaseListByParam(lambdaQueryWrapper);
@@ -60,6 +60,7 @@ public class CaseServiceImpl extends ServiceImpl<CaseMapper,CaseData> implements
         for (CaseData caseData : caseDataList) {
 //            测试用例业务参数
             JSONObject caseDataParameters = caseData.getParameters();
+            LambdaUpdateChainWrapper<CaseData> lambdaUpdateChainWrapper = new LambdaUpdateChainWrapper<>(caseMapper);
 //            请求url
             String interfaceUrl = caseData.getHost() + caseData.getUri();
 //            请求体参数
@@ -98,22 +99,22 @@ public class CaseServiceImpl extends ServiceImpl<CaseMapper,CaseData> implements
 //          设置后不校验签名
 //            headers.put("twgdh", "xjdmg");
             JSONObject jsonObject = HttpUtils.doPost(interfaceUrl, headers, params);
-            jsonObject.put("id", caseData.getId());
+//            jsonObject.put("id", caseData.getId());
 //            测试用例执行过后更新字段：
 //              1. 将数据库的is_run字段为1；
 //              2. 将实际结果更新到数据库的actual_result
 //              3. 更新update_time
 //            caseMapper.updateCaseRunState(lambdaQueryWrapper);
-            lambdaUpdateChainWrapper.eq(CaseData::getId, 1)
+            lambdaUpdateChainWrapper.eq(CaseData::getId, caseData.getId())
                     .set(CaseData::getIsRun, "1")
                     .set(CaseData::getActualResult, jsonObject.toString())
                     .set(CaseData::getUpdateTime, new Date())
-                    .update();
+                    .update(caseData);
 //          开始结果校验
             try {
                 validationService.generalValidate(jsonObject);
             }catch (AssertionError assertionError){
-                logger.info("===========" + String.valueOf(assertionError));
+                logger.info("===========" + assertionError);
             }finally {
                 System.out.println(jsonObject);
             }

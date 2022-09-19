@@ -101,22 +101,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.testng</groupId>-->
-<!--            <artifactId>testng</artifactId>-->
-<!--            <version>${testng}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.httpcomponents</groupId>-->
-<!--            <artifactId>httpclient</artifactId>-->
-<!--            <version>${httpclient.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.aventstack</groupId>-->
-<!--            <artifactId>extentreports</artifactId>-->
-<!--            <version>${extentreports.version}</version>-->
-<!--        </dependency>-->
-
-    </dependencies>
 </project>
