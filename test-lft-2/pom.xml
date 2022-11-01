@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>test-lft</artifactId>
+    <artifactId>test-lft-2</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -45,18 +45,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
@@ -73,13 +61,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-
-<!--        spring-boot-starter依赖里包含了spring-boot-stater-logging，springboot默认日志框架就是logback-->
-<!--        <dependency>-->
-<!--            <groupId>ch.qos.logback</groupId>-->
-<!--            <artifactId>logback-classic</artifactId>-->
-<!--            <version>${logback.version}</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

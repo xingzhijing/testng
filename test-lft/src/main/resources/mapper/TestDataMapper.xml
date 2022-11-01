@@ -28,8 +28,8 @@
         <result column="uri" jdbcType="VARCHAR" property="uri"/>
         <result column="method" jdbcType="VARCHAR" property="methods"/>
 <!--        parameters为json类型-->
-<!--        <result column="parameters" property="parameters" typeHandler="com.xzj.handler.MySqlJsonHandler"/>-->
-        <result column="parameters" jdbcType="VARCHAR"  property="parameters"/>
+        <result column="parameters" property="parameters" typeHandler="com.xzj.handler.MySqlJsonHandler"/>
+<!--        <result column="parameters" jdbcType="VARCHAR"  property="parameters"/>-->
         <result column="descriptions" jdbcType="VARCHAR" property="descriptions"/>
         <result column="is_run" jdbcType="VARCHAR" property="isRun"/>
         <result column="expect_result" jdbcType="VARCHAR" property="expectResult"/>

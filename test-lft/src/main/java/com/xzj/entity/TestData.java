@@ -20,8 +20,8 @@ public class TestData {
     private String methods;
 
 //    请求参数
-//    private JSONObject parameters;
-    private String parameters;
+    private JSONObject parameters;
+//    private String parameters;
 
 //    接口描述
     private String descriptions;

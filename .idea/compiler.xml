@@ -10,6 +10,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="test-base" />
         <module name="test-mysql" />
+        <module name="test-lft-2" />
         <module name="test-advance" />
         <module name="test-case" />
         <module name="test-lft" />
@@ -17,5 +18,8 @@
         <module name="test-common" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test-lft2" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

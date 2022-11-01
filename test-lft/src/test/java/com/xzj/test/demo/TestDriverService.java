@@ -1,7 +1,6 @@
 package com.xzj.test.demo;
 
 import com.xzj.LFTApplication;
-import com.xzj.dto.TestDataDTO;
 import com.xzj.entity.TestData;
 import com.xzj.service.TestDriverDataService;
 import org.springframework.beans.factory.annotation.Autowired;

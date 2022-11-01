@@ -20,13 +20,13 @@ public class TestDriver {
 //    测试
 //    1941
 //    private static String company_key = "2fac02a6-b85d-4e3f-986d-d742e8354c04";
-//    private final String testTax = "123456789098765";
+//    private final String taxNo = "123456789098765";
 //    1939
-    private static String company_key = "44167fc5-c8e9-4ba0-9224-656345f26d5b";
-    private final String testTax = "91330200MA282H486E";
+//    private static String company_key = "44167fc5-c8e9-4ba0-9224-656345f26d5b";
+//    private final String taxNo = "91330200MA282H486E";
 //    生产
-//    private final String company_key = "af6bce91-0eec-409b-9627-754d23dd087c";
-//    private final String prodTax = "911101083065625168";
+    private final String company_key = "af6bce91-0eec-409b-9627-754d23dd087c";
+    private final String taxNo = "911101083065625168";
     private final String nonce_str = "z0SWco";
     private final Logger logger = Logger.getLogger(CreateSignUtils.class);
 
@@ -36,10 +36,7 @@ public class TestDriver {
         Map<String, String> params = new HashMap<>();
         params.put("company_key", company_key);
         params.put("nonce_str",  nonce_str);
-//        测试
-        params.put("taxno", testTax);
-//        生产
-//        params.put("taxno", prodTax);
+        params.put("taxno", taxNo);
         params.put("driverName", "菠菜");
         params.put("sex", "1");
         params.put("phoneNum", "15301322687");
@@ -79,10 +76,7 @@ public class TestDriver {
         Map<String, String> params = new HashMap<>();
         params.put("company_key", company_key);
         params.put("nonce_str", nonce_str);
-//        测试
-        params.put("taxno", testTax);
-//        生产
-//        params.put("taxno", prodTax);
+        params.put("taxno", taxNo);
         params.put("plateNum", "京ALB1" + (int)(Math.random()*100));
         params.put("vehicleType", "一型货车");
         params.put("nuclearWeight", "10.02");
@@ -109,23 +103,22 @@ public class TestDriver {
 
     @Test(enabled = true, priority = 2)
     public void CreateOrder() throws IOException {
-        String createOrderApi = ResourceConfig.getUrl("application", "test.lft", "create.order");
+        String createOrderApi = ResourceConfig.getUrl("application", "prod.lft", "create.order");
         Map<String, String> params = new HashMap<>();
 
         params.put("company_key", company_key);
         params.put("nonce_str", nonce_str);
-//        测试
-        params.put("taxno", testTax);
-//        生产
-//        params.put("taxno", prodTax);
+        params.put("taxno", taxNo);
         params.put("orderNum", "YD20220713" + (int)(Math.random()*10000));
         params.put("idCard", "142625199808202862");
-        params.put("plateNum", "京ALB150");
+//        params.put("plateNum", "京ALB091");
+        params.put("plateNum", "京ALB156");
 //        params.put("plateColor", "1");
         params.put("sendAddress", "北京市海淀区");
         params.put("sendTime", DateUtils.localDateTimeFormat(LocalDateTime.now().minusDays(1), "yyyy-MM-dd HH:mm:ss"));
         params.put("receiveAddress", "北京市昌平区");
-        params.put("receiveTime", DateUtils.localDateTimeFormat(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));
+//        params.put("receiveTime", DateUtils.localDateTimeFormat(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));
+        params.put("receiveTime", "2021-01-31 00:00:00");
         params.put("amount", "1000");
         params.put("consignor", "百合");
         params.put("chargeType", "0");
@@ -136,7 +129,8 @@ public class TestDriver {
         params.put("pickUpTime", DateUtils.localDateTimeFormat(LocalDateTime.now().minusDays(1), "yyyy-MM-dd HH:mm:ss"));
         params.put("receiveUserName", "百合");
         params.put("receiveUserPhone", "15300002678");
-        params.put("signTime", DateUtils.localDateTimeFormat(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));
+//        params.put("signTime", DateUtils.localDateTimeFormat(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));
+        params.put("signTime", "2022-02-20 00:00:00");
         params.put("contractAmount", "1000");
         params.put("lossAmount", "1");
         params.put("goods", JSON.toJSON(TestDriver.goodsInfo()).toString());
@@ -148,6 +142,7 @@ public class TestDriver {
 //        headers.put("twgdh", "xjdmg");
         JSONObject jsonObject = HttpUtils.doPost(createOrderApi, headers, params);
         System.out.println(params.get("orderNum"));
+        System.out.println(params.get("receiveTime"));
         System.out.println(jsonObject);
     }
 
