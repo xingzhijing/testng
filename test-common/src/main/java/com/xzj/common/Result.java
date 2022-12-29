@@ -1,5 +1,7 @@
 package com.xzj.common;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +16,7 @@ import java.util.Map;
  */
 
 @SuppressWarnings("unchecked")
+@Data
 public final class Result<T> implements Serializable {
 
   private static final long serialVersionUID = 1888932078692392845L;
@@ -141,40 +144,4 @@ public final class Result<T> implements Serializable {
     return new Result<T>(false, code, msg, data);
   }
 
-  /**
-   * get,set属性
-   */
-  public boolean isSuccess() {
-    return success;
-  }
-
-  public String getCode() {
-    return code;
-  }
-
-  public String getMsg() {
-    return msg;
-  }
-
-  public T getData() {
-    return data;
-  }
-
-  public Result setData(T data) {
-    this.data = data;
-    return this;
-  }
-
-  public Result setMsg(String msg) {
-    this.msg = msg;
-    return this;
-  }
-
-  public void setSuccess(boolean success) {
-    this.success = success;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
 }

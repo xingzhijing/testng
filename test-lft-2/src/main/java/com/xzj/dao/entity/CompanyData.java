@@ -1,20 +1,20 @@
-package com.xzj.entity;
+package com.xzj.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName(value = "department_data")
-public class DepartmentData {
+@TableName(value = "company_data")
+public class CompanyData {
     private Integer id;
 
     @TableField("company_id")
     private String companyId;
 
-    @TableField("department_id")
-    private String departmentId;
+    @TableField("company_key")
+    private String companyKey;
 
-    @TableField("tax_no")
-    private String taxNo;
+    @TableField("company_secret")
+    private String companySecret;
 }

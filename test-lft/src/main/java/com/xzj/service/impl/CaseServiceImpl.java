@@ -64,7 +64,7 @@ public class CaseServiceImpl extends ServiceImpl<CaseMapper,CaseData> implements
 //            请求url
             String interfaceUrl = caseData.getHost() + caseData.getUri();
 //            请求体参数
-            Map<String, String> params = new HashMap<>();
+            Map<String, Object> params = new HashMap<>();
             Map<String, String> headers = new HashMap<>();
 
 //           参数设置

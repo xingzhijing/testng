@@ -36,7 +36,7 @@ public class DriverOperator extends AbstractTestNGSpringContextTests {
     @Test(dataProvider = "createDriverProvider", dataProviderClass = DriverParams.class)
     public void CreateDriver(Driver driver) throws Exception{
         String interfaceUrl = integrationService.integrationUrl(DRIVER_CREATE);
-        Map<String, String> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
         Map<String, String> headers = new HashMap<>();
 //        参数设置
         params.put("driverName", driver.getDriverName());

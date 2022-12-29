@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!--  不同环境输出不同的日志  -->
-    <springProfile name="prod">
-        <root level="error">
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="FILE" />
-        </root>
-    </springProfile>
-
-    <springProfile name="dev,test">
-        <!-- 日志输出级别 -->
-        <root level="INFO">
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="FILE" />
-        </root>
-    </springProfile>
 
     <!-- 日志根目录-->
     <springProperty scope="context" name="LOG_HOME" source="logging.path" defaultValue="./logs/spring-boot-logback"/>
@@ -135,5 +120,29 @@
         <!-- FILE_ERROR 日志输出添加到 logger -->
         <appender-ref ref="FILE_ERROR"/>
     </root>
+
+    <!--  不同环境输出不同的日志  -->
+    <springProfile name="prod">
+        <root level="error">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="FILE_ERROR" />
+        </root>
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="FILE_ALL" />
+        </root>
+    </springProfile>
+
+    <springProfile name="dev,test">
+        <!-- 日志输出级别 -->
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="FILE_ALL" />
+        </root>
+        <root level="ERROR">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="FILE_ERROR" />
+        </root>
+    </springProfile>
 
 </configuration>

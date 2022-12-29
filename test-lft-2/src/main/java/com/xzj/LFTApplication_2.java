@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "com.xzj")
-@MapperScan(basePackages = "com.xzj.mapper")
+@MapperScan(basePackages = "com.xzj.dao.mapper")
 public class LFTApplication_2 {
     public static void main(String[] args) {
         try {

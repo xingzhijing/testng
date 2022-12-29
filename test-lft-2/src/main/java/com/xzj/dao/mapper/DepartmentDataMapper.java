@@ -1,7 +1,7 @@
-package com.xzj.mapper;
+package com.xzj.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xzj.entity.DepartmentData;
+import com.xzj.dao.entity.DepartmentData;
 
 public interface DepartmentDataMapper extends BaseMapper<DepartmentData> {
 }

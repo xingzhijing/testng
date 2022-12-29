@@ -1,7 +1,6 @@
-package com.xzj.service;
+package com.xzj.utils;
 
-import com.xzj.config.TestProperties;
-import com.xzj.utils.RandomStrUtils;
+//import com.xzj.config.TestProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
@@ -11,16 +10,20 @@ import org.testng.log4testng.Logger;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
-public class CreateSignService {
-    @Autowired
-    TestProperties testProperties;
+public class CreateSignUtils {
 
-    public String invokeFee(@NonNull Map<String, Object> kvMap,
+    /**
+     * 生成签名
+     * */
+    public static String invokeFee(@NonNull Map<String, Object> kvMap,
                             @NonNull String companySecret) {
-        Logger logger = Logger.getLogger(CreateSignService.class);
+        Logger logger = Logger.getLogger(CreateSignUtils.class);
         //6位随机字符串
         kvMap.put("nonce_str", RandomStrUtils.getRandomStr(6));
         Map<String, Object> resultMap = new HashMap<>();

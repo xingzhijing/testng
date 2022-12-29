@@ -30,7 +30,7 @@ public class TestDriver {
     private final String nonce_str = "z0SWco";
     private final Logger logger = Logger.getLogger(CreateSignUtils.class);
 
-    @Test(enabled = true, priority = 0)
+    @Test(enabled = false, priority = 0)
     public void CreateDriver() throws IOException {
         String createDriverApi = ResourceConfig.getUrl("application", "prod.lft", "create.driver");
         Map<String, String> params = new HashMap<>();
@@ -70,7 +70,7 @@ public class TestDriver {
         System.out.println(jsonObject);
     }
 
-    @Test(enabled = true, priority = 1)
+    @Test(enabled = false, priority = 1)
     public void CreateCar() throws IOException {
         String createCarApi = ResourceConfig.getUrl("application", "prod.lft", "create.car");
         Map<String, String> params = new HashMap<>();
@@ -118,7 +118,7 @@ public class TestDriver {
         params.put("sendTime", DateUtils.localDateTimeFormat(LocalDateTime.now().minusDays(1), "yyyy-MM-dd HH:mm:ss"));
         params.put("receiveAddress", "北京市昌平区");
 //        params.put("receiveTime", DateUtils.localDateTimeFormat(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));
-        params.put("receiveTime", "2021-01-31 00:00:00");
+        params.put("receiveTime", "2022-01-31 00:00:00");
         params.put("amount", "1000");
         params.put("consignor", "百合");
         params.put("chargeType", "0");
@@ -142,7 +142,7 @@ public class TestDriver {
 //        headers.put("twgdh", "xjdmg");
         JSONObject jsonObject = HttpUtils.doPost(createOrderApi, headers, params);
         System.out.println(params.get("orderNum"));
-        System.out.println(params.get("receiveTime"));
+//        System.out.println(params);
         System.out.println(jsonObject);
     }
 
@@ -151,9 +151,9 @@ public class TestDriver {
      * */
     public static List goodsInfo(){
         List<Map> goodsList = new ArrayList<>();
-        Map<String, String> goodsMap = new HashMap();
         for (int i = 0; i < 2; i++) {
-            goodsMap.put("goodsNum", "1000" + i);
+            Map<String, String> goodsMap = new HashMap();
+            goodsMap.put("goodsNum", "10005" + i);
             goodsMap.put("chargeType", "0");
             goodsMap.put("goodsName", "煤炭");
             goodsMap.put("goodsWeight", "10-吨");
@@ -161,6 +161,7 @@ public class TestDriver {
 //            goodsMap.put("goodsCount", "100-");
             goodsList.add(goodsMap);
         }
+        System.out.println(goodsList);
         return goodsList;
     }
 
@@ -169,8 +170,8 @@ public class TestDriver {
      * */
     public static List trackInfo(){
         List<Map> trackList = new ArrayList<>();
-        Map<String, String> trackMap = new HashMap();
         for (int i = 0; i < 2; i++) {
+            Map<String, String> trackMap = new HashMap();
             trackMap.put("lat", "11" + i);
             trackMap.put("lon", "1123");
             trackMap.put("gtm", "123");
@@ -188,14 +189,15 @@ public class TestDriver {
      * */
     public static List payInfo(){
         List<Map> payList = new ArrayList<>();
-        Map<String, String> payMap = new HashMap();
         for (int i = 0; i < 2; i++) {
+            Map<String, String> payMap = new HashMap();
             payMap.put("receiveAccount", "6212262502009182345" + i);
             payMap.put("receiveName", "张三");
             payMap.put("transferAmount", "1000");
             payMap.put("payAccount", "11050163030000000549");
             payMap.put("payName", "智运通（北京）科技有限责任公司");
-            payMap.put("bankReceiptFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.pdf"));
+            payMap.put("bankReceiptFile", Base64Utils.GetImageStr("/Users/xzj/Desktop/2.jpg"));
+//            payMap.put("bankReceiptFile", "123");
 //            转账凭证流水号 必填
             payMap.put("serialNo", "9876543210");
 //            其他银行流水信息 非必填

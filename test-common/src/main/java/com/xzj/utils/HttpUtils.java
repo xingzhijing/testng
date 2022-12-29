@@ -39,7 +39,7 @@ public class HttpUtils {
      * @return
      * @throws Exception
      */
-    public static JSONObject doPost(String url, Map<String, String> params) throws Exception {
+    public static JSONObject doPost(String url, Map<String, Object> params) throws Exception {
         return doPost(url, null, params);
     }
 
@@ -52,7 +52,7 @@ public class HttpUtils {
      * @return
      * @throws Exception
      */
-    public static JSONObject doPost(String url, Map<String, String> headerMap, Map<String, String> params) throws IOException {
+    public static JSONObject doPost(String url, Map<String, String> headerMap, Map<String, Object> params) throws IOException {
         HttpPost httpPost = new HttpPost(url);
         RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
         httpPost.setConfig(defaultConfig);
@@ -90,14 +90,14 @@ public class HttpUtils {
      * @param httpMethod
      * @throws UnsupportedEncodingException
      */
-    public static void packageParam(Map<String, String> params, HttpEntityEnclosingRequestBase httpMethod)
+    public static void packageParam(Map<String, Object> params, HttpEntityEnclosingRequestBase httpMethod)
             throws UnsupportedEncodingException {
         // 封装请求参数
         if (params != null) {
             List<BasicNameValuePair> nvps = new ArrayList<BasicNameValuePair>();
-            Set<Map.Entry<String, String>> entrySet = params.entrySet();
-            for (Map.Entry<String, String> entry : entrySet) {
-                nvps.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            Set<Map.Entry<String, Object>> entrySet = params.entrySet();
+            for (Map.Entry<String, Object> entry : entrySet) {
+                nvps.add(new BasicNameValuePair(entry.getKey(), String.valueOf(entry.getValue())));
             }
             // 设置到请求的http对象中
             httpMethod.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
